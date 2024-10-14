@@ -42,6 +42,7 @@ function pandocRenderer(data, options){
 }
 
 hexo.extend.filter.register('before_post_render', (data) => {
+  throw Error("WTF");
   let standalone = "path" in data;
   if (!standalone) {
     return
