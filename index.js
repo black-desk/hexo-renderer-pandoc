@@ -7,7 +7,6 @@ let spawnSync = require('child_process').spawnSync;
 let parseArgs = require('./lib/parseArgs.js');
 
 function pandocRenderer(data, options){
-        throw "pandocRenderer is not implemented";
   var pandoc_path = 'pandoc';
   if(hexo?.config?.pandoc?.pandoc_path) {
     pandoc_path = hexo.config.pandoc.pandoc_path;
@@ -43,6 +42,8 @@ function pandocRenderer(data, options){
 }
 
 hexo.extend.filter.register('before_post_render', (data) => {
+
+  console.log("WTF");
   let standalone = "path" in data;
   if (!standalone) {
     return data
