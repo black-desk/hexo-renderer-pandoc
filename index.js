@@ -42,10 +42,9 @@ function pandocRenderer(data, options){
 }
 
 hexo.extend.filter.register('before_post_render', (data) => {
-  throw Error("WTF");
   let standalone = "path" in data;
   if (!standalone) {
-    return
+    return data
   }
 
   let folder = '';
@@ -79,6 +78,8 @@ hexo.extend.filter.register('before_post_render', (data) => {
   }
 
   console.log(data.source + " Title found: " + title[1]);
+
+  return data
 });
 
 hexo.extend.renderer.register('md', 'html', pandocRenderer, true);
